@@ -119,6 +119,16 @@ type variableProperties struct {
 
 		// include Colt variables
 		Colt android_colt.Product_variables
+
+		Device_support_hwfde struct {
+			Cflags []string
+			Header_libs  []string
+			Shared_libs  []string
+		}
+
+		Device_support_hwfde_perf struct {
+			Cflags []string
+		}
 	} `android:"arch_variant"`
 }
 
@@ -193,6 +203,8 @@ type productVariables struct {
 	Use_lmkd_stats_log         *bool `json:",omitempty"`
 	Arc                        *bool `json:",omitempty"`
 	MinimizeJavaDebugInfo      *bool `json:",omitempty"`
+	Device_support_hwfde       *bool `json:",omitempty"`
+	Device_support_hwfde_perf  *bool `json:",omitempty"`
 
 	IntegerOverflowExcludePaths *[]string `json:",omitempty"`
 
