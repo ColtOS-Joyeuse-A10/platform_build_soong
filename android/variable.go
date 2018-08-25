@@ -117,8 +117,8 @@ type variableProperties struct {
 			Srcs         []string
 		}
 
-		// include Carbon variables
-		*android.Product_variables
+		// include Colt variables
+		Colt android.Product_variables
 	} `android:"arch_variant"`
 }
 
@@ -237,8 +237,8 @@ type productVariables struct {
 
 	VendorVars map[string]map[string]string `json:",omitempty"`
 
-	// include Carbon variables
-	*android.ProductVariables
+	// include Colt variables
+	Colt android.ProductVariables
 }
 
 func boolPtr(v bool) *bool {
