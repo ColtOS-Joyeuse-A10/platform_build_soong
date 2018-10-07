@@ -86,7 +86,11 @@ func dumpMakeVars(ctx Context, config Config, goals, vars []string, write_soong_
 
 // Variables to print out in the top banner
 var BannerVars = []string{
-	"XTENDED_VERSION",
+	"PLATFORM_VERSION_CODENAME",
+	"PLATFORM_VERSION",
+	"TARGET_PRODUCT",
+	"COLT_MOD_VERSION",
+ 	"COLT_VERSION",
 	"TARGET_BUILD_VARIANT",
 	"TARGET_ARCH",
 	"TARGET_ARCH_VARIANT",
@@ -98,9 +102,22 @@ var BannerVars = []string{
 func Banner(make_vars map[string]string) string {
 	b := &bytes.Buffer{}
 
-	fmt.Fprintln(b, "============================================")
+	fmt.Fprintln(b, "===================================================")
+	fmt.Fprintln(b, "	                                            ")
+	fmt.Fprintln(b,"	 ▄████▄   ▒█████   ██▓  ▄▄▄█████▓           ")
+	fmt.Fprintln(b,"	▒██▀ ▀█  ▒██▒  ██▒▓██▒  ▓  ██▒ ▓▒           ")
+	fmt.Fprintln(b,"	▒▓█    ▄ ▒██░  ██▒▒██░  ▒ ▓██░ ▒░           ")
+	fmt.Fprintln(b,"	▒▓▓▄ ▄██▒▒██   ██░▒██░  ░ ▓██▓ ░            ")
+	fmt.Fprintln(b,"	▒ ▓███▀ ░░ ████▓▒░░██████▒▒██▒ ░            ")
+	fmt.Fprintln(b,"	░ ░▒ ▒  ░░ ▒░▒░▒░ ░ ▒░▓  ░▒ ░░              ")
+	fmt.Fprintln(b,"	  ░  ▒     ░ ▒ ▒░ ░ ░ ▒  ░  ░               ")
+	fmt.Fprintln(b,"	░        ░ ░ ░ ▒    ░ ░   ░                 ")
+	fmt.Fprintln(b,"	░ ░          ░ ░      ░  ░                  ")
+	fmt.Fprintln(b,"	░                                           ")
+	fmt.Fprintf(b, "        ColtOS-%s %s %s\n", make_vars["COLT_VERSION"], make_vars["PLATFORM_VERSION"], make_vars["TARGET_PLATFORM_VERSION"] )
+ 	fmt.Fprintln(b, "===================================================")
 	for _, name := range BannerVars {
-		if make_vars[name] != "" {
+		if make_vars[name] != "" && name != "COLT_VERSION" {
 			fmt.Fprintf(b, "%s=%s\n", name, make_vars[name])
 		}
 	}
